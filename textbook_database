@@ -122,6 +122,7 @@ cursor.execute(create_table_textbooks)
 cursor.execute(create_table_users)
 cursor.execute(create_table_listings)
 
+insert_listing('test.db','1','Math for Dummies','tester123@gmail.com','Good','20.00')
 textbook_table_test()
 user_table_test()
 listing_table_test()
