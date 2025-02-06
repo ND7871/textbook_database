@@ -33,9 +33,9 @@ create_table_listings = f"""
             FOREIGN KEY (l_email) REFERENCES tbl_users(u_email)
         )
         """
-def insert_textbook(db_name, t_bookname, t_class, t_professor, t_ebook, t_required, t_link ):
+def insert_textbook(t_bookname, t_class, t_professor, t_ebook, t_required, t_link ):
     try:
-        conn = sqlite3.connect(db_name)
+        conn = sqlite3.connect('test.db')
         cursor = conn.cursor()
         
         insert_sql = """
@@ -57,9 +57,9 @@ def insert_textbook(db_name, t_bookname, t_class, t_professor, t_ebook, t_requir
         if conn:
             conn.close()
 
-def insert_user(db_name, u_email, u_fname, u_lname, u_password):
+def insert_user(u_email, u_fname, u_lname, u_password):
     try: 
-        conn = sqlite3.connect(db_name)
+        conn = sqlite3.connect('test.db')
         cursor = conn.cursor()
         insert_sql = """
         INSERT INTO tbl_users(u_email, u_fname, u_lname, u_password)
@@ -77,9 +77,9 @@ def insert_user(db_name, u_email, u_fname, u_lname, u_password):
     finally:
         if conn:
             conn.close()
-def insert_listing(db_name, l_id, l_bookname, l_email, l_condition, l_price):
+def insert_listing(l_id, l_bookname, l_email, l_condition, l_price):
     try: 
-        conn = sqlite3.connect(db_name)
+        conn = sqlite3.connect('test.db')
         cursor = conn.cursor()
         insert_sql = """
         INSERT INTO tbl_listings(l_id, l_bookname, l_email, l_condition, l_price)
@@ -97,26 +97,103 @@ def insert_listing(db_name, l_id, l_bookname, l_email, l_condition, l_price):
     finally:
         if conn:
             conn.close()
+def remove_textbook(textbookname):
+    try:
+        conn = sqlite3.connect('test.db')
+        cursor = conn.cursor()
+        remove_sql = """DELETE FROM tbl_textbooks WHERE t_name = ? """
+        cursor.execute(remove_sql, (textbookname,))
+        conn.commit()
+
+        print("Record removed sucesfully")
+
+    except sqlite3.Error as error:
+        print(f"Error while removing data: {error}")
+    
+    finally:
+        if conn:
+            conn.close()
+def remove_user(useremail):
+    try:
+        conn = sqlite3.connect('test.db')
+        cursor = conn.cursor()
+        remove_sql = """DELETE FROM tbl_users WHERE u_email = ? """
+        cursor.execute(remove_sql, (useremail,))
+        conn.commit()
+
+        print("Record removed sucesfully")
+
+    except sqlite3.Error as error:
+        print(f"Error while removing data: {error}")
+    
+    finally:
+        if conn:
+            conn.close()
+def remove_listing(listingid):
+    try:
+        conn = sqlite3.connect('test.db')
+        cursor = conn.cursor()
+        remove_sql = """DELETE FROM tbl_listings WHERE l_id = ? """
+        cursor.execute(remove_sql, (listingid,))
+        conn.commit()
+
+        print("Record removed sucesfully")
+
+    except sqlite3.Error as error:
+        print(f"Error while removing data: {error}")
+    
+    finally:
+        if conn:
+            conn.close()
+def textbook_search(searchfield, keyword):
+    try:
+        if searchfield == 'Book Name':
+            search_sql = """
+            SELECT t_name, t_class, t_professor, t_ebook, t_required, t_link
+            FROM tbl_textbooks
+            WHERE t_name = ?
+            """
+        elif searchfield == 'Class':
+            search_sql = """
+            SELECT t_name, t_class, t_professor, t_ebook, t_required, t_link
+            FROM tbl_textbooks
+            WHERE t_class = ?
+            """
+        elif searchfield == 'Professor':
+            search_sql = """
+            SELECT t_name, t_class, t_professor, t_ebook, t_required, t_link
+            FROM tbl_textbooks
+            WHERE t_professor = ?
+            """
+        else:
+            print(f"{searchfield} is not a valid field, please use Book Name, Class, or Professor")
+        conn = sqlite3.connect('test.db')
+        cursor = conn.cursor()
+        cursor.execute(search_sql,(keyword,))
+        search = cursor.fetchall()
+        print(search)
+
+    except sqlite3.Error as error:
+        print(f"Error while searching: {error}")
+    finally:
+        if conn:
+            conn.close()
+        
+
 def user_table_test():
     cursor.execute("""SELECT*FROM tbl_users""")
     user = cursor.fetchall()
-
-    for users in user:
-        print(user) 
+    print(user) 
 
 def textbook_table_test():
     cursor.execute("""SELECT*FROM tbl_textbooks""")
     textbook = cursor.fetchall()
-
-    for textbooks in textbook:
-        print(textbook)
+    print(textbook)
 
 def listing_table_test():
     cursor.execute("""SELECT*FROM tbl_listings""")
     listing = cursor.fetchall()
-
-    for listings in listing:
-        print(listing)
+    print(listing)
 
 cursor.execute(create_table_textbooks)
 cursor.execute(create_table_users)
