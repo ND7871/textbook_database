@@ -33,6 +33,8 @@ create_table_listings = f"""
             FOREIGN KEY (l_email) REFERENCES tbl_users(u_email)
         )
         """
+# Set a new field for Textbook ID, automatically assign the textbook a new ID with each new entry using a counter
+# The counter should be stored in a file, maybe the database so it can be kept up to date.
 def insert_textbook(t_bookname, t_class, t_professor, t_ebook, t_required, t_link ):
     try:
         conn = sqlite3.connect('test.db')
@@ -56,7 +58,7 @@ def insert_textbook(t_bookname, t_class, t_professor, t_ebook, t_required, t_lin
     finally:
         if conn:
             conn.close()
-
+# ADD CHECK FOR VALID EMAIL (SEARCH STRING FOR @ SYMBOL)
 def insert_user(u_email, u_fname, u_lname, u_password):
     try: 
         conn = sqlite3.connect('test.db')
@@ -198,10 +200,5 @@ def listing_table_test():
 cursor.execute(create_table_textbooks)
 cursor.execute(create_table_users)
 cursor.execute(create_table_listings)
-
-textbook_table_test()
-user_table_test()
-listing_table_test()
-
 conn.commit()
 conn.close()
