@@ -1,0 +1,61 @@
+
+
+body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+            background-color: #f9f9f9;
+margin: 0;
+}
+
+header {
+     background: #1f5503;
+    color: white;
+        padding: 15px;
+}
+
+nav ul {
+        list-style: none;
+padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#sell-textbooks {
+    margin: 40px auto;
+    max-width: 400px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input, button {
+      width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+button {
+    background: #0073e6;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #005bb5;
+}
+
+#offer-container {
+    margin-top: 20px;
+    padding: 20px;
+background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
