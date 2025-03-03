@@ -3,19 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selling Page</title>
+    <title>Sell Your Textbooks | Textbook Database</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to the New Page</h1>
+        <h1>Textbook Database</h1>
+        <nav>
+            <ul>
+                   <li> <a href="index.html">Home</a></li>
+             <li><a href="buyTexts.html">Buy Textbooks</a></li>
+                <li><a href="sellTexts.html">Sell Textbooks</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="search.html">Search</a></li>
+           
+            </ul>
+        
+            </nav>
     </header>
 
     <main>
-        <p>This is your new webpage content.</p>
+        <section id="sell-textbooks">
+            <h2>See if your Textbook is Needed</h2>
+           
+            <p>Enter the ISBN of your textbook .</p>
+           
+            <input type="text" id="isbn-input" placeholder="Enter ISBN">
+           
+            <button id="search-btn">SEARCH</button>
+        </section>
+
+        <section id="book-results">
+            <h2>Your Offers</h2>
+            <div id="offer-container">
+                <p>Offers will appear here once you enter an ISBN.</p>
+           
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Your Website</p>
+        <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
