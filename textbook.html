@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textbook Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Textbook Details</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="buyTexts.html">Buy Textbooks</a></li>
+                <li><a href="sellTexts.html">Sell Textbooks</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="textbook-details">
+            <h2>Loading Textbook Details...</h2>
+            <div id="details-container"></div>
+            <a href="index.html" class="back-btn">Go Back</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const textbookName = urlParams.get("id");
+
+            if (!textbookName) {
+                document.getElementById("details-container").innerHTML = "<p>No textbook provided.</p>";
+                return;
+            }
+
+            fetch(`http://127.0.0.1:5000/textbook?id=${encodeURIComponent(textbookName)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data) {
+                        document.getElementById("details-container").innerHTML = `
+                            <h2>${data.t_name}</h2>
+                            <p><strong>Class:</strong> ${data.t_class}</p>
+                            <p><strong>Professor:</strong> ${data.t_professor || "N/A"}</p>
+                            <p><strong>Required:</strong> ${data.t_required ? "Yes" : "No"}</p>
+                            <p><strong>eBook Available:</strong> ${data.t_ebook ? "Yes" : "No"}</p>
+                            ${data.t_link ? `<p><a href="${data.t_link}" target="_blank">View Online</a></p>` : ""}
+                        `;
+                    } else {
+                        document.getElementById("details-container").innerHTML = "<p>Textbook not found.</p>";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    document.getElementById("details-container").innerHTML = "<p>Error retrieving textbook details.</p>";
+                });
+        });
+    </script>
+</body>
+</html>
