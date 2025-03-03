@@ -11,29 +11,70 @@
         <h1>Textbook Database</h1>
         <nav>
             <ul>
-                   <li> <a href="index.html">Home</a></li>
-             <li><a href="buyTexts.html">Buy Textbooks</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="buyTexts.html">Buy Textbooks</a></li>
                 <li><a href="sellTexts.html">Sell Textbooks</a></li>
                 <li><a href="login.html">Login</a></li>
-                <li><a href="search.html">Search</a></li>
-           
             </ul>
-        
-            </nav>
+        </nav>
     </header>
 
     <main>
         <section id="sell-textbooks">
-            <h2>UNT Textbook Database by Students</h2>
-
+            <h2>Sell Your Textbooks</h2>
+            <p>Enter the title of your book</p>
+            <input type="text" id="isbn-input" placeholder="Enter Title">
+            <button id="search-btn">SEARCH</button>
         </section>
 
+        <section id="book-results">
+            <h2>Your Offers</h2>
+            <div id="offer-container">
+                <p>Offers will appear here once you enter a title.</p>
+            </div>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById("search-btn").addEventListener("click", function() {
+            let isbn = document.getElementById("isbn-input").value;
+            if (!isbn) {
+                alert("Please enter an ISBN!");
+                return;
+            }
+
+            fetch(`http://127.0.0.1:5000/search?query=${encodeURIComponent(isbn)}`)
+                .then(response => response.json())
+                .then(data => {
+                    let offerContainer = document.getElementById("offer-container");
+                    if (data.length) {
+                        offerContainer.innerHTML = data.map(row => `<p>${row[1]} - $${row[2]}</p>`).join('');
+                    } else {
+                        offerContainer.innerHTML = "<p>No offers found for this ISBN.</p>";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById("offer-container").innerHTML = "<p>Error retrieving offers.</p>";
+                });
+        });
+    </script>
+
+    <script>
+        document.getElementById("search-btn").addEventListener("click", function() {
+            let isbn = document.getElementById("isbn-input").value;
+            if (!isbn) {
+                alert("Please enter an ISBN!");
+                return;
+            }
+            window.location.href = `results.html?query=${encodeURIComponent(isbn)}`;
+        });
+    </script>
+    
 </body>
 </html>
+
