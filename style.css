@@ -120,6 +120,7 @@ input[type="text"] {
     border-radius: 5px;
     display: block;
     box-sizing: border-box; 
+}
 
 
 button.search-btn {
