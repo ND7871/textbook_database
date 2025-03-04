@@ -59,3 +59,79 @@ button:hover {
 background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+#search-container {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start;
+    gap: 30px; 
+    margin: 40px auto;
+    max-width: 1100px;
+    position: relative;
+}
+
+
+#search-box {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 500px;
+    text-align: center;
+    background: white;
+    padding: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 0 auto;
+    position: relative;
+    left: 150px; 
+}
+
+
+
+#filter-box {
+    width: 220px;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+    top: 0;
+    height: auto; 
+}
+
+
+#filter-box {
+    margin-bottom: 40px;
+}
+
+
+#filter-box select,
+#filter-box input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+
+input[type="text"] {
+    width: calc(100% - 20px); 
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+    box-sizing: border-box; 
+
+
+button.search-btn {
+    width: 100%; 
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.search-btn:hover {
+    background-color: #0056b3;
+}
