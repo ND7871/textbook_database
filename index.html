@@ -8,37 +8,54 @@
 </head>
 <body>
     <header>
-        <h1>Textbook Database</h1>
+        <h1>Textbook Database for Current UNT Students [2025]</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="buyTexts.html">Buy Textbooks</a></li>
-                <li><a href="sellTexts.html">Sell Textbooks</a></li>
                 <li><a href="login.html">Login</a></li>
-                <li><a href="search.html">Search</a></li>
-                <li><a href="signup.html">Signup</a><li>
-
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="sell-textbooks">
-            <h2>Search Textbooks</h2>
-            <p>Enter the title of your book</p>
-            <input type="text" id="isbn-input" placeholder="Enter Title">
-            <button id="search-btn">SEARCH</button>
-        </section>
-
-        <section id="book-results">
-            <h2>Your Offers</h2>
-            <div id="offer-container">
-                <p>Offers will appear here once you enter a title.</p>
+        <section id="search-container">
+            
+            <div id="search-box">
+                <h2>Search for Textbook</h2>
+                <p>Enter Name of Textbook:</p>
+                <input type="text" id="textbook-name-input" placeholder="Enter Name">
+                <button id="search-btn">SEARCH</button>
+            </div>
+        
+            
+            <div id="filter-box">
+                <h2>Filters</h2>
+                <p>Category:</p>
+                <select id="category-filter">
+                    <option value="">All Categories</option>
+                    <option value="science">Science</option>
+                    <option value="math">Math</option>
+                    <option value="engineering">Engineering</option>
+                    <option value="literature">Literature</option>
+                    <option value="business">Business</option>
+                </select>
+        
+                <p>Condition:</p>
+                <select id="condition-filter">
+                    <option value="">Any Condition</option>
+                    <option value="new">New</option>
+                    <option value="used">Used</option>
+                    <option value="like-new">Like New</option>
+                </select>
+        
+                <p>Price Range:</p>
+                <input type="number" id="min-price" placeholder="Min Price">
+                <input type="number" id="max-price" placeholder="Max Price">
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="bottom-footer">
         <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
     </footer>
 
