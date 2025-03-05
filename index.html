@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Textbooks | Textbook Database</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Textbook Database for Current UNT Students [2025]</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="search-container">
+            
+            <div id="search-box">
+                <h2>Search for Textbook</h2>
+                <p>Enter Name of Textbook:</p>
+                <input type="text" id="textbook-name-input" placeholder="Enter Name">
+                <button id="search-btn">SEARCH</button>
+            </div>
+        
+            <div id="filter-box">
+                <h2>Filters</h2>
+                <p>Category:</p>
+                <select id="category-filter">
+                    <option value="">All Categories</option>
+                    <option value="science">Science</option>
+                    <option value="math">Math</option>
+                    <option value="engineering">Engineering</option>
+                    <option value="literature">Literature</option>
+                    <option value="business">Business</option>
+                </select>
+        
+                <p>Condition:</p>
+                <select id="condition-filter">
+                    <option value="">Any Condition</option>
+                    <option value="new">New</option>
+                    <option value="used">Used</option>
+                    <option value="like-new">Like New</option>
+                </select>
+        
+                <p>Price Range:</p>
+                <input type="number" id="min-price" placeholder="Min Price">
+                <input type="number" id="max-price" placeholder="Max Price">
+            </div>
+        </section>
+
+        <div id="offer-container"></div> <!-- Ensure this exists to display results -->
+    </main>
+
+    <footer class="bottom-footer">
+        <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+    </footer>
+
+    <script>
+        document.getElementById("search-btn").addEventListener("click", function() {
+            let textbookName = document.getElementById("textbook-name-input").value;
+            
+            if (!textbookName) {
+                alert("Please enter the name of the textbook!");
+                return;
+            }
+
+            // Redirect to results page with query parameter
+            window.location.href = `results.html?query=${encodeURIComponent(textbookName)}`;
+        });
+    </script>
+</body>
+</html>
