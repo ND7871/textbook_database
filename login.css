@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+        background-color: #f9f9f9;
+margin: 0;
+}
+
+header {
+ background: #02640D;
+color: white;
+    padding: 15px;
+}
+
+/* Nav Bar*/
+nav ul {
+    list-style: none;
+padding: 0;
+}
+
+nav ul li {
+display: inline;
+margin: 0 15px;
+}
+
+nav ul li a {
+color: white;
+text-decoration: none;
+}
+
+/* Login Container*/
+#account-login {
+margin: 40px auto;
+max-width: 400px;
+padding: 20px;
+background: white;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#login-btn {
+width: 75%; 
+height: 40px; 
+border: none;
+border-radius: 0 5px 5px 0; 
+background-color: #02640D; 
+color: white; 
+cursor: pointer; 
+}
+
+/* Login field boxes*/
+input[type="text"] {
+width: calc(100% - 20px); 
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+display: block;
+box-sizing: border-box; 
+}
+
+input, button {
+  width: 100%;
+padding: 10px;
+margin-top: 10px;
+}
+
+.bottom-footer {
+position: fixed; 
+bottom: 0;       
+left: 0;      
+width: 100%;     
+background-color: #02640D; 
+color: white;   
+text-align: center; 
+padding: 10px 0; 
+box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3); 
+z-index: 9999;  
+}
