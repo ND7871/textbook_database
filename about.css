@@ -1,0 +1,63 @@
+/* === GLOBAL === */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f9f9f9;
+    margin: 0;
+}
+
+/* === HEADER === */
+header {
+    background: #02640D;
+    color: white;
+    padding: 15px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+/* === ABOUT PAGE CONTENT === */
+.about-container {
+    margin: 60px auto;
+    max-width: 900px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.about-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+/* === FOOTER === */
+.bottom-footer {
+    position: fixed; 
+    bottom: 0;       
+    left: 0;      
+    width: 100%;     
+    background-color: #02640D; 
+    color: white;   
+    text-align: center; 
+    padding: 10px 0; 
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3); 
+    z-index: 9999;
+}
