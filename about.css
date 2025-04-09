@@ -1,4 +1,4 @@
-/* === GLOBAL === */
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -6,7 +6,7 @@ body {
     margin: 0;
 }
 
-/* === HEADER === */
+
 header {
     background: #02640D;
     color: white;
@@ -30,7 +30,7 @@ nav ul li a {
 
 
 
-/* === ABOUT PAGE CONTENT === */
+
 .about-container {
     margin: 60px auto;
     max-width: 900px;
@@ -48,7 +48,7 @@ nav ul li a {
     text-align: left;
 }
 
-/* === FOOTER === */
+
 .bottom-footer {
     position: fixed; 
     bottom: 0;       
