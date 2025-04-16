@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Account | Textbook Database</title>
+    <link rel="stylesheet" href="accounts.css">
+  </head>
+  <body>
+    <header>
+      <h1>Your Account</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-button">Home</a></li>
+          <li><button id="logout-btn" class="nav-button">Logout</button></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="account-info">
+        <div id="user-info-box">
+          <p id="user-name-heading"></p>
+        </div>
+        <h2>Your Listings</h2>
+
+        <div id="user-listings">
+          <!-- Listings will be dynamically inserted here -->
+        </div>
+
+        <button id="create-listing-btn">Create New Listing</button>
+
+        <div id="create-listing-form" style="display: none;">
+          <h3>Create Listing</h3>
+          <input type="text" id="book-name" placeholder="Book Name">
+          <input type="text" id="book-condition" placeholder="Condition">
+          <input type="number" id="book-price" placeholder="Price">
+          <button id="submit-listing-btn">Submit Listing</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bottom-footer">
+      <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+    </footer>
+
+    <script src="accounts.js"></script>
+  </body>
+</html>

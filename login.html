@@ -1,42 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sell Your Textbooks | Textbook Database</title>
-        <link rel="stylesheet" href="login.css">
-    </head>
-    <body>
-        <header>
-            <h1>Textbook Database for Current UNT Students [2025]</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="login.html">Account</a></li>
-                </ul>
-            
-                </nav>
-        </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sell Your Textbooks | Textbook Database</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <header>
+    <h1>Textbook Database for Current UNT Students [2025]</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Account</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <main>
-            <section id="account-login">
-                <h2>Login</h2>
-            
-                <p>Enter your Username and Password</p>
-            
-                <input type="text" id="Enter Email" placeholder="Enter Email">
-                <input type="text" id="Enter Password" placeholder="Enter Password"">
+  <main>
+    <section id="account-login">
+      <h2>Login</h2>
+      <p>Enter your Email and Password</p>
+      <input type="email" id="email" placeholder="Enter Email" />
+      <input type="password" id="password" placeholder="Enter Password" />
+      <button id="login-btn">Login</button>
+      <p id="login-status"></p>
+    </section>
+  </main>
 
-            
-                <button id="login-btn">Login</button>
-            </section>
+  <footer class="bottom-footer">
+    <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+  </footer>
 
-        </main>
-
-        <footer class="bottom-footer">
-            <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
-        </footer>
-
-        <script src="script.js"></script>
-    </body>
+  <script>
+    document.getElementById('login-btn').addEventListener('click', async () => {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+  
+      if (!email || !password) {
+          alert("Please enter both email and password.");
+          return;
+      }
+  
+      try {
+          const response = await fetch('http://127.0.0.1:5000/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, password })
+          });
+  
+          const result = await response.json();
+  
+          if (response.ok) {
+              // Save token to localStorage
+              localStorage.setItem('authToken', result.token);
+  
+              // Redirect to accounts page
+              window.location.href = 'accounts.html'; // Change this URL to your accounts page URL
+          } else {
+              alert(result.error || 'Login failed');
+          }
+  
+      } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred while logging in.');
+      }
+  });
+  </script>
+</body>
 </html>
