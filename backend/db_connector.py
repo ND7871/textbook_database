@@ -401,7 +401,28 @@ def logout():
     finally:
         if conn:
             conn.close()
+@app.route('/mylistings', methods=['GET'])
+def get_my_listings():
 
+    user_email = request.args.get('email')
+    if not user_email:
+        return jsonify({'error': 'No email provided'}), 400
+    try:
+        conn = sqlite3.connect('test.db')
+        cursor = conn.cursor()
+        query = """
+            SELECT l.l_id, l.l_bookname, l.l_email, l.l_condition, l.l_price
+            FROM tbl_listings l
+            WHERE l.l_email = ?
+        """
+        cursor.execute(query, (user_email,))
+        listings = cursor.fetchall()
+        return jsonify(listings)
+    except sqlite3.Error as error:
+        return jsonify({'error': str(error)}), 400
+    finally:
+        if conn:
+            conn.close()
             
 if __name__ == '__main__':
     app.run(debug=True)
