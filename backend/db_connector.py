@@ -9,6 +9,7 @@ import hashlib
 app = Flask(__name__)
 CORS(app)
 
+#Establishes DB connection, isnt overly used because it causes the DB to be active more than neccescary
 def get_db_connection():
     conn = sqlite3.connect("textbook_database.db")
     conn.row_factory = sqlite3.Row
