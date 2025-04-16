@@ -9,7 +9,6 @@ import hashlib
 app = Flask(__name__)
 CORS(app)
 
-#Establishes DB connection, isnt overly used because it causes the DB to be active more than neccescary
 def get_db_connection():
     conn = sqlite3.connect("textbook_database.db")
     conn.row_factory = sqlite3.Row
@@ -402,73 +401,7 @@ def logout():
     finally:
         if conn:
             conn.close()
-@app.route('/mylistings', methods=['GET'])
-def get_my_listings():
 
-    user_email = request.args.get('email')
-    if not user_email:
-        return jsonify({'error': 'No email provided'}), 400
-    try:
-        conn = sqlite3.connect('test.db')
-        cursor = conn.cursor()
-        query = """
-            SELECT l.l_id, l.l_bookname, l.l_email, l.l_condition, l.l_price
-            FROM tbl_listings l
-            WHERE l.l_email = ?
-        """
-        cursor.execute(query, (user_email,))
-        listings = cursor.fetchall()
-        return jsonify(listings)
-    except sqlite3.Error as error:
-        return jsonify({'error': str(error)}), 400
-    finally:
-        if conn:
-            conn.close()
-
-@app.route('/listings', methods=['GET'])
-def get_listings():
-
-    category = request.args.get('category')
-    condition = request.args.get('condition')
-    min_price = request.args.get('min_price')
-    max_price = request.args.get('max_price')
-
-    filters = []
-    params = []
-
-    if category:
-        filters.append("t.t_class = ?")
-        params.append(category)
-    if condition:
-        filters.append("l.l_condition = ?")
-        params.append(condition)
-    if min_price:
-        filters.append("l.l_price >= ?")
-        params.append(min_price)
-    if max_price:
-        filters.append("l.l_price <= ?")
-        params.append(max_price)
-
-    query = """
-        SELECT l.l_id, l.l_bookname, l.l_email, l.l_condition, l.l_price, 
-             t.t_class, t.t_professor, t.t_ebook, t.t_required, t.t_link
-      FROM tbl_listings l
-      LEFT JOIN tbl_textbooks t ON l.l_bookname = t.t_name
-    """
-    if filters:
-        query += " WHERE " + " AND ".join(filters)
-
-    try:
-        conn = sqlite3.connect('test.db')
-         cursor = conn.cursor()
-         cursor.execute(query, params)
-         listings = cursor.fetchall()
-         return jsonify(listings)
-    except sqlite3.Error as error:
-         return jsonify({'error': str(error)}), 400
-    finally:
-        if conn:
-            conn.close()
-        
+            
 if __name__ == '__main__':
     app.run(debug=True)
