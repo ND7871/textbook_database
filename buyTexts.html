@@ -4,18 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buying Page</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to the New Page</h1>
+        <h1>Buy Textbooks</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Account</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <p>This is your new webpage content.</p>
+        <section id="filter-box">
+      <h2>Filters</h2>
+      <form id="filter-form">
+        <label for="category-filter">Category:</label>
+        <select id="category-filter" name="category">
+          <option value="">All Categories</option>
+          <option value="science">Science</option>
+          <option value="math">Math</option>
+          <option value="engineering">Engineering</option>
+          <option value="literature">Literature</option>
+          <option value="business">Business</option>
+        </select>
+        <label for="condition-filter">Condition:</label>
+        <select id="condition-filter" name="condition">
+          <option value="">Any Condition</option>
+          <option value="new">New</option>
+          <option value="used">Used</option>
+            <option value="like-new">Like New</option>
+        </select>
+        <label for="min-price">Min Price:</label>
+        <input type="number" id="min-price" name="min_price" placeholder="Min Price">
+        <label for="max-price">Max Price:</label>
+        <input type="number" id="max-price" name="max_price" placeholder="Max Price">
+        <button type="submit">Filter</button>
+      </form>
+    </section>
+    <section id="listings-container">
+    </section>
     </main>
-
-    <footer>
-        <p>&copy; 2025 Your Website</p>
+    <footer class="bottom-footer">
+        <p>© 2025 Textbook Database | Sell and Buy Books Easily</p>
     </footer>
+    <script>
+    const form = document.getElementById('filter-form');
+    const listingsContainer = document.getElementById('listings-container');
+
+    function fetchListings(params = {}) {
+      const queryString = new URLSearchParams(params).toString();
+      fetch(`http://127.0.0.1:5000/listings?${queryString}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.length > 0) {
+            listingsContainer.innerHTML = data.map(listing => {
+              return `
+                <div class="listing">
+                  <h3>
+                    <a href="textbook.html?id=${encodeURIComponent(listing[1])}">
+                      ${listing[1]}
+                    </a>
+                </h3>
+                <p>Condition: ${listing[3]}</p>
+                  <p>Price: $${listing[4]}</p>
+                </div>
+              `;
+            }).join('');
+          } else {
+            listingsContainer.innerHTML = '<p>No listings found.</p>';
+          }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            listingsContainer.innerHTML = '<p>Error fetching listings.</p>';
+        });
+    }
+
+    fetchListings();
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const params = Object.fromEntries(formData.entries());
+      fetchListings(params);
+    });
+    </script>
 </body>
 </html>
