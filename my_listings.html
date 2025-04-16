@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Listings</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <h1>My Listings</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div id="my-listings">
+    </div>
+  </main>
+  <footer class="bottom-footer">
+    <p>© 2025 Textbook Database | Sell and Buy Books Easily</p>
+  </footer>
+  <script>
+    fetch(`http://127.0.0.1:5000/mylistings?email=${encodeURIComponent(userEmail)}`)
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById("my-listings");
+        if(data.length > 0) {
+          container.innerHTML = data.map(listing => {
+            return `<div class="listing">
+                      <h3>Listing ID: ${listing[0]}</h3>
+                      <p>Book: ${listing[1]}</p>
+                      <p>Condition: ${listing[3]}</p>
+                      <p>Price: $${listing[4]}</p>
+                    </div>`;
+          }).join('');
+        }else {
+          container.innerHTML = "<p>You have no listings.</p>;
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        document.getElementById("my-listings").innerHTML = "<p>Error loading listings.</p>";
+      });
+  </script>
+</body>
+</html>
