@@ -63,15 +63,15 @@
 
     <script>
         document.getElementById("search-btn").addEventListener("click", function() {
-            let textbookName = document.getElementById("textbook-name-input").value;
+            const query = document.getElementById("textbook-name-input").value;
             
-            if (!textbookName) {
+            if (!query) {
                 alert("Please enter the name of the textbook!");
                 return;
             }
 
             // Redirect to results page with query parameter
-            window.location.href = `results.html?query=${encodeURIComponent(textbookName)}`;
+            window.location.href = `listings.html?query=${encodeURIComponent(query)}`;
         });
     </script>
 </body>
