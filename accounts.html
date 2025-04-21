@@ -33,7 +33,13 @@
         <div id="create-listing-form" style="display: none;">
           <h3>Create Listing</h3>
           <input type="text" id="book-name" placeholder="Book Name">
-          <input type="text" id="book-condition" placeholder="Condition">
+          <select id="book-condition">
+            <option value="" disabled selected>Select Condition</option>
+            <option value="Like New">Like New</option>
+            <option value="Good">Good</option>
+            <option value="Acceptable">Acceptable</option>
+            <option value="Poor">Poor</option>
+          </select>        
           <input type="number" id="book-price" placeholder="Price">
           <button id="submit-listing-btn">Submit Listing</button>
         </div>
