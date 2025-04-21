@@ -67,6 +67,14 @@ nav ul li a {
     margin-top: 15px;
     font-weight: bold;
 }
+.signup-link {
+    margin-top: 15px;
+  }
+  
+  .signup-link a {
+    color: #02640D;
+    text-decoration: none;
+  }
 
 .bottom-footer {
     position: fixed;
