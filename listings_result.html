@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Listings Results</title>
+  <link rel="stylesheet" href="listings.css">
+</head>
+<body>
+  <header>
+    <h1>Listings Results</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="listings_search.html">Search Listings</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="results-container">
+      <p>Loading results...</p>
+    </section>
+    <a href="listings_search.html">Back to Search</a>
+  </main>
+  <footer>
+    <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const category = params.get("category");
+      const condition = params.get("condition");
+      const minPrice = params.get("min_price");
+      const maxPrice = params.get("max_price");
+      
+      fetch(`http://127.0.0.1:5000/listings?category=${category}&condition=${condition}&min_price=${minPrice}&max_price=${maxPrice}`)
+        .then(response => response.json())
+        .then(data => {
+          const resultsContainer = document.getElementById("results-container");
+          if (data.length > 0) {
+            resultsContainer.innerHTML = data.map(listing => `
+              <div>
+                <h2><a href="listings.html?id=${listing.l_id}">${listing.l_bookname}</a></h2>
+                <p>Condition: ${listing.l_condition}</p>
+                <p>Price: $${listing.l_price}</p>
+              </div>
+            `).join("");
+          } else {
+            resultsContainer.innerHTML = "<p>No listings found.</p>";
+          }
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          document.getElementById("results-container").innerHTML = "<p>Error fetching results.</p>";
+        });
+    });
+  </script>
+</body>
+</html>
