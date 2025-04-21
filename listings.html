@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Listing Details</title>
+  <link rel="stylesheet" href="listings.css">
+</head>
+<body>
+  <header>
+    <h1>Listing Details</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="listings_search.html">Search Listings</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="listing-details">
+      <p>Loading listing...</p>
+    </section>
+    <a href="listings_results.html">Back to Results</a>
+  </main>
+  <footer>
+    <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const listingId = params.get("id");
+
+      fetch(`http://127.0.0.1:5000/listings/${listingId}`)
+        .then(response => response.json())
+        .then(data => {
+          const detailsSection = document.getElementById("listing-details");
+          if (data) {
+            detailsSection.innerHTML = `
+              <h2>${data.l_bookname}</h2>
+              <p><strong>Condition:</strong> ${data.l_condition}</p>
+              <p><strong>Price:</strong> $${data.l_price}</p>
+              <p><strong>Contact:</strong> ${data.l_email}</p>
+            `;
+          } else {
+            detailsSection.innerHTML = "<p>Listing not found.</p>";
+          }
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          document.getElementById("listing-details").innerHTML = "<p>Error fetching listing details.</p>";
+        });
+    });
+  </script>
+</body>
+</html>
