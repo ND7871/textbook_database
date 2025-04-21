@@ -15,7 +15,6 @@
                 <li><a href="accounts.html">Account</a></li>
                 <li><a href="about.html">About us</a></li>
                 <li><a href="signup.html">Sign Up</a></li>
-                <li><a href="listings.html">Listings</a></li>
             </ul>
         </nav>
     </header>
@@ -64,15 +63,15 @@
 
     <script>
         document.getElementById("search-btn").addEventListener("click", function() {
-            const query = document.getElementById("textbook-name-input").value;
+            let textbookName = document.getElementById("textbook-name-input").value;
             
-            if (!query) {
+            if (!textbookName) {
                 alert("Please enter the name of the textbook!");
                 return;
             }
 
             // Redirect to results page with query parameter
-            window.location.href = `listings.html?query=${encodeURIComponent(query)}`;
+            window.location.href = `results.html?query=${encodeURIComponent(textbookName)}`;
         });
     </script>
 </body>
