@@ -1,0 +1,85 @@
+/* Base page styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  text-align: center;
+}
+
+/* Header */
+header {
+  background-color: #02640D;
+  color: white;
+  padding: 15px 0;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Navigation bar */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Main section */
+main {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Listing details box */
+#listing-details {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  text-align: left;
+}
+
+#listing-details h2 {
+  margin-top: 0;
+  color: #02640D;
+}
+
+/* Back link */
+a {
+  margin-top: 20px;
+  display: inline-block;
+  text-decoration: none;
+  color: #02640D;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #02640D;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
