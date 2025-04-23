@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Textbook Listing | Textbook Database</title>
+  <link rel="stylesheet" href="list_format.css">
   <link rel="stylesheet" href="textbook.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -21,10 +22,9 @@
   </header>
 
   <main>
-    <section id="textbook-details">
-        <h2>Loading Textbook Details...</h2>
-        <div id="details-container"></div>
-        <a href="index.html" class="back-btn">Go Back</a>
+    <section id="textbook-details" class="card">
+      <div id="details-container"></div>
+      <a href="index.html" class="back-btn">Go Back</a>
     </section>
 </main>
 
@@ -33,8 +33,6 @@
       <p>&copy; 2025 Textbook Database | Book Details</p>
     </div>
   </footer>
-
-
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
