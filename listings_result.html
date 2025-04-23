@@ -33,30 +33,28 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const params = new URLSearchParams(window.location.search);
+      const query = params.get("query");
       const category = params.get("category");
       const condition = params.get("condition");
-      const minPrice = params.get("min_price");
-      const maxPrice = params.get("max_price");
       
-      fetch(`http://127.0.0.1:5000/listings?category=${category}&condition=${condition}&min_price=${minPrice}&max_price=${maxPrice}`)
+      fetch(`http://127.0.0.1:5000/listings?query=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}&condition=${encodeURIComponent(condition)}`)
         .then(response => response.json())
         .then(data => {
           const resultsContainer = document.getElementById("results-container");
-          if (data.length > 0) {
-            resultsContainer.innerHTML = data.map(listing => `
+          resultsContainer.innerHTML = data.length
+            ? data.map(listing => `
               <div>
                 <div class="card result-card">
-                <h2><a href="listings.html?id=${listing.l_id}">${listing.l_bookname}</a></h2>
-                <p>Condition: ${listing.l_condition}</p>
-                <p>Price: $${listing.l_price}</p>
+                <h3><a href="listings.html?id=${encodeURIComponent(listing.book_name)}">${listing.book_name}</a></h3>
+                    <p>Condition: ${listing.condition}</p>
+                    <p>Price: $${listing.price}</p>
+                    <p><strong>Seller Email:</strong> <a href="mailto:${listing.seller_email}">${listing.seller_email}</a></p>
               </div>
             `).join("");
-          } else {
-            resultsContainer.innerHTML = "<p>No listings found.</p>";
-          }
-        })
-        .catch(err => {
-          console.error("Error:", err);
+            : "<p>No results found.</p>";
+    })
+        .catch(error => {
+          console.error("Error:", error);
           document.getElementById("results-container").innerHTML = "<p>Error fetching results.</p>";
         });
     });
