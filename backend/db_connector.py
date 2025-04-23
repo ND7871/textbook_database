@@ -51,6 +51,44 @@ def search_textbooks():
     finally:
         if conn:
             conn.close()
+
+@app.route('/listings', methods=['GET'])
+def search_listings():
+    query = request.args.get('query', '').strip()
+    category = request.args.get('category', '')
+    condition = request.args.get('condition', '')
+    
+    try:
+        conn = sqlite3.connect('textbook_database.db')
+        cursor = conn.cursor()
+
+        sql = """
+        SELECT l_bookname, l_condition, l_price, l_email FROM tbl_listings
+        WHERE l_bookname LIKE ? COLLATE NOCASE
+        """
+
+        params = ['%' + query + '%']
+
+        if category:
+            sql += " AND l_bookname LIKE ? COLLATE NOCASE"
+            params.append('%' + category + '%')
+
+        if condition:
+            sql += " AND l_condition = ?"
+            params.append(condition)
+
+        cursor.execute(sql, params)
+        search_results = [{"book_name": row[0], "condition": row[1], "price": row[2], "seller_email": row[3]} for row in cursor.fetchall()]
+        
+        return jsonify(search_results)
+
+    except sqlite3.Error as error:
+        return jsonify({'error': str(error)}), 400
+
+    finally:
+        if conn:
+            conn.close()
+
 @app.route('/textbook', methods=['GET'])
 def get_textbook():
     textbook_name = request.args.get('id', '').strip()
