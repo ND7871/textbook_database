@@ -84,3 +84,33 @@ main {
   flex: 1;
 }
 
+/* Panel wrapper styling */
+#search-results.card {
+    max-width: var(--max-content-width);
+    margin: 40px auto;
+}
+
+/* Back button styling */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    border-radius: var(--input-radius);
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    box-sizing: border-box;
+    box-shadow: var(--box-shadow);
+    background: white;
+    color: inherit;
+}
+
+/* Individual result cards */
+.result-card {
+    padding: 20px;
+}
+
+.result-card h3 {
+    margin-top: 0;
+    color: #02640D;
+}
