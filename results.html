@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Results | Textbook Database</title>
   <link rel="stylesheet" href="results.css" />
+  <link rel="stylesheet" href="list_format.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -21,10 +22,12 @@
   </header>
 
   <main class="results-container">
-    <h2>Search Results</h2>
-    <div id="offer-container">
-      
-    </div>
+    <section id="search-results" class="card">
+      <h2>Search Results</h2>
+      <div id="offer-container">
+      <div id="results-container" class="grid">
+      </div>
+    </section>
   </main>
 
   <footer class="bottom-footer">
@@ -32,11 +35,6 @@
       <p>&copy; 2025 Textbook Database | Search Results</p>
     </div>
   </footer>
-
-
-
-
-
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -61,6 +59,16 @@
                                 </a> - Class: ${textbook.t_class}
                             </p>
                         `).join('');
+                       resultsContainer.innerHTML = data.map(textbook => `
+                            <div class="card result-card">
+                                <h3>
+                                <a href="textbook.html?id=${encodeURIComponent(textbook.t_name)}">
+                                    ${textbook.t_name}
+                                </a>
+                                </h3>
+                            <p>Class: ${textbook.t_class}</p>
+                            </div>
+                       `).join('');
                     } else {
                         resultsContainer.innerHTML = "<p>No results found for your search.</p>";
                     }
