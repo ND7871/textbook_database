@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buying Page</title>
-    <link rel="stylesheet" href="index.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Buy Textbooks | Textbook Database</title>
+    <link rel="stylesheet" href="listings.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  </head>
 <body>
-    <header>
-        <h1>Buy Textbooks</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="login.html">Account</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="header-overlay">
+      <h1>Textbook Database </h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html">Account</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
     <main>
         <section id="filter-box">
@@ -44,10 +47,18 @@
         <button type="submit">Filter</button>
       </form>
     </section>
-    <section id="listings-container">
+    <section id="results">
+      <h2>Your Offers</h2>
+      <div id="results-container">
+      
+      </div>
     </section>
     </main>
     <footer class="bottom-footer">
+      <div class="footer-overlay">
+        <p>&copy; 2025 Textbook Database | Book Listings</p>
+      </div>
+    </footer>
         <p>© 2025 Textbook Database | Sell and Buy Books Easily</p>
     </footer>
     <script>

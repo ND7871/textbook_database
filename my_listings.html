@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>My Listings</title>
-  <link rel="stylesheet" href="index.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My listings</title>
+    <link rel="stylesheet" href="listings.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  </head>
 <body>
   <header>
-    <h1>My Listings</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="login.html">Account</a></li>
-      </ul>
-    </nav>
-  </header>
+    div class="header-overlay">
+      <h1>Textbook Database </h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html">Account</a></li>
+         
+        </ul>
+      </nav>
+    </div>
   <main>
     <div id="my-listings">
     </div>
   </main>
   <footer class="bottom-footer">
-    <p>© 2025 Textbook Database | Sell and Buy Books Easily</p>
+    <div class="footer-overlay">
+      <p>&copy; 2025 Textbook Database | Listings Form</p>
+    </div>
   </footer>
   <script>
     fetch(`http://127.0.0.1:5000/mylistings?email=${encodeURIComponent(userEmail)}`)

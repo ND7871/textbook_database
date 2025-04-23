@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report an Issue</title>
-    <link rel="stylesheet" href="report.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report an Issue</title>
+  <link rel="stylesheet" href="report.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Report an Issue</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="report.html" class="active">Report</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="header-overlay">
+      <h1>Textbook Database</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings_search.html">Listings</a></li>
+          <li><a href="about.html">About</a></li>
+         
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="report-container">
-        <form action="https://formspree.io/f/xrbpvpaw" method="POST">
-            <label for="category">Issue Type:</label>
-            <select id="category" name="category" required>
-                <option value="">Select a category</option>
-                <option value="book">Book Listing Issue</option>
-                <option value="user">Report a User</option>
-                <option value="technical">Technical Mistake</option>
-                <option value="other">Other</option>
-            </select>
+  <main class="report-container">
+    <form action="https://formspree.io/f/xrbpvpaw" method="POST">
+      <label for="category">Issue Type:</label>
+      <select id="category" name="category" required>
+        <option value="">Select a category</option>
+        <option value="book">Book Listing Issue</option>
+        <option value="user">Report a User</option>
+        <option value="technical">Technical Mistake</option>
+        <option value="other">Other</option>
+      </select>
 
-            <label for="message">Describe the issue:</label>
-            <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+      <label for="message">Describe the issue:</label>
+      <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
 
-            <label for="email">Your Email (optional):</label>
-            <input type="email" id="email" name="email" placeholder="example@email.com">
+      <label for="email">Your Email (optional):</label>
+      <input type="email" id="email" name="email" placeholder="example@email.com">
 
-            <button type="submit">Submit Report</button>
-        </form>
-    </main>
+      <button type="submit">Submit Report</button>
+    </form>
+  </main>
 
-    <footer class="bottom-footer">
-        <p>© 2025 Textbook Database | Report Form</p>
-    </footer>
+  <footer class="bottom-footer">
+    <div class="footer-overlay">
+      <p>&copy; 2025 Textbook Database | Report Form</p>
+    </div>
+  </footer>
 </body>
 </html>

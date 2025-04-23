@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Listing Details</title>
-  <link rel="stylesheet" href="listings.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>All Listings | Textbook Database</title>
+    <link rel="stylesheet" href="listings.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  </head>
 <body>
   <header>
-    <h1>Listing Details</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="listings_search.html">Search Listings</a></li>
-      </ul>
-    </nav>
+    <div class="header-overlay">
+      <h1>Textbook Database </h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings_search.html">Search Listings</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
+
   <main>
     <section id="listing-details">
       <p>Loading listing...</p>
     </section>
     <a href="listings_results.html">Back to Results</a>
   </main>
-  <footer>
-    <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+  <footer class="bottom-footer">
+    <div class="footer-overlay">
+      <p>&copy; 2025 Textbook Database | Browse Listings</p>
+    </div>
   </footer>
   <script>
     document.addEventListener("DOMContentLoaded", () => {

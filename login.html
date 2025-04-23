@@ -3,37 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sell Your Textbooks | Textbook Database</title>
+  <title>Login | Textbook Database</title>
   <link rel="stylesheet" href="login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>Textbook Database for Current UNT Students [2025]</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="login.html">Account</a></li>
-      </ul>
-    </nav>
+    <div class="header-overlay">
+      <h1>Textbook Database</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="accounts.html">Account</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section id="account-login">
       <h2>Login</h2>
       <p>Enter your Email and Password</p>
-      <input type="email" id="email" placeholder="Enter Email" />
-      <input type="password" id="password" placeholder="Enter Password" />
-      <button id="login-btn">Login</button>
+      <form>
+        <input type="email" id="email" placeholder="Enter Email" required />
+        <input type="password" id="password" placeholder="Enter Password" required />
+        <button type="submit" id="login-btn">Login</button>
+      </form>
+      <p class="signup-link">
+        <a href="signup.html">Don't have an account? Sign up here</a>
+      </p>
       <p id="login-status"></p>
-    </form>
-    <p class="signup-link"><a href="signup.html">Dont have an account? Sign up here</a></p>
     </section>
   </main>
 
   <footer class="bottom-footer">
-    <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+    <div class="footer-overlay">
+      <p>&copy; 2025 Textbook Database | Login</p>
+    </div>
   </footer>
-
   <script>
     document.getElementById('login-btn').addEventListener('click', async () => {
       const email = document.getElementById('email').value.trim();

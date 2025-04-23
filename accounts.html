@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Account | Textbook Database</title>
     <link rel="stylesheet" href="accounts.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
-      <h1>Your Account</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html" class="nav-button">Home</a></li>
-          <li><button id="logout-btn" class="nav-button">Logout</button></li>
-        </ul>
-      </nav>
+      <div class="header-overlay">
+        <h1>Textbook Database </h1>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-button">Home</a></li>
+            <li><button id="logout-btn" class="nav-button">Logout</button></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>
@@ -39,7 +42,7 @@
             <option value="Good">Good</option>
             <option value="Acceptable">Acceptable</option>
             <option value="Poor">Poor</option>
-          </select>        
+          </select>
           <input type="number" id="book-price" placeholder="Price">
           <button id="submit-listing-btn">Submit Listing</button>
         </div>
@@ -47,7 +50,9 @@
     </main>
 
     <footer class="bottom-footer">
-      <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+      <div class="footer-overlay">
+        <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+      </div>
     </footer>
 
     <script src="accounts.js"></script>

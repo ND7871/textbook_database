@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Sell Your Textbooks | Textbook Database</title>
     <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Textbook Database for Current UNT Students [2025]</h1>
-        <nav>
-            <ul>
-                <li><a href="listings_search.html">Listings</a></li>
-                <li><a href="accounts.html">Account</a></li>
-                <li><a href="about.html">About us</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
-            </ul>
-        </nav>
+        <div class="header-overlay">
+            <h1>Textbook Database </h1>
+            <nav>
+                <ul>
+                    <li><a href="listings_search.html">Listings</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
         <section id="search-container">
-            
             <div id="search-box">
                 <h2>Search for Textbook</h2>
                 <p>Enter Name of Textbook:</p>
@@ -29,23 +32,23 @@
                 <button id="search-btn">SEARCH</button>
             </div>
         </section>
-
     </main>
 
     <footer class="bottom-footer">
-        <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+        <div class="footer-overlay">
+            <p>&copy; 2025 Textbook Database | Sell and Buy Books Easily</p>
+        </div>
     </footer>
 
     <script>
         document.getElementById("search-btn").addEventListener("click", function() {
             let textbookName = document.getElementById("textbook-name-input").value;
-            
+
             if (!textbookName) {
                 alert("Please enter the name of the textbook!");
                 return;
             }
 
-            // Redirect to results page with query parameter
             window.location.href = `results.html?query=${encodeURIComponent(textbookName)}`;
         });
     </script>
