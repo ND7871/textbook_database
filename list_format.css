@@ -1,0 +1,39 @@
+:root {
+    --card-radius: 8px;
+    --input-radius: 8px;
+    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --border-color: #ccc;
+    --card-padding: 25px;
+    --max-content-width: 1100px;
+  }
+  
+  /* Universal card style */
+  .card {
+    background: #fff;
+    padding: var(--card-padding);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    box-shadow: var(--box-shadow);
+    text-align: left;
+    box-sizing: border-box;
+  }
+  
+  /* Uniform form fields & buttons */
+  input, select, button {
+    border: 1px solid var(--border-color);
+    border-radius: var(--input-radius);
+    padding: 0.5em;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  /* Utility grid container */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
