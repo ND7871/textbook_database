@@ -137,3 +137,21 @@ body {
 main {
   flex: 1;
 }
+/* Detail page override (centers & caps width) */
+#listing-details.card {
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+/* Search results grid (if you choose to keep it here) */
+#results-container.grid {
+}
+
+.result-card {
+}
+
+#listings-search-form.card {
+  max-width: 600px;
+  margin: 40px auto;
+}
+
