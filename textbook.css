@@ -11,6 +11,9 @@ html, body {
   font-family: 'Montserrat', sans-serif;
   background: url('images/page-backdrop.jpg') center/cover no-repeat fixed;
   background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 header {
@@ -61,12 +64,51 @@ nav ul li a.active {
   background-color: #fdfdfd;
 }
 
+#textbook-details.card {
+  width: 20vmin;           
+  aspect-ratio: 1 / 1;     
+  margin: 3rem auto;       
+}
+
+#details-container.card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#details-container.card h2 {
+  margin-top: 0;
+  color: #02640D;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--input-radius);
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  box-sizing: border-box;
+  box-shadow: var(--box-shadow);
+  background: white;
+  color: inherit;
+}
+
+main {
+  flex: 1;
+}
+
 .bottom-footer {
   background: url('footer-background.jpg') center/cover no-repeat, #02640D;
   color: white;
   text-align: center;
   padding: 25px 10px;
   margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 .footer-overlay {
