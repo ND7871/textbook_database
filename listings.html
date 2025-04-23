@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>All Listings | Textbook Database</title>
+    <title>Listing Details</title>
     <link rel="stylesheet" href="listings.css">
     <link rel="stylesheet" href="list_format.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
 <body>
   <header>
     <div class="header-overlay">
-      <h1>Textbook Database </h1>
+      <h1>Listing Details</h1>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -20,13 +20,12 @@
       </nav>
     </div>
   </header>
-
   <main>
     <section id="listing-details">
     <section id="listing-details" class="card">
       <p>Loading listing...</p>
     </section>
-    <a href="listings_results.html">Back to Results</a>
+    <a href="listings_result.html">Back to Results</a>
   </main>
   <footer class="bottom-footer">
     <div class="footer-overlay">
@@ -36,25 +35,21 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const params = new URLSearchParams(window.location.search);
-      const listingId = params.get("id");
+      const bookName = params.get("id");
 
-      fetch(`http://127.0.0.1:5000/listings/${listingId}`)
+      fetch(`http://127.0.0.1:5000/listings/${bookName}`)
         .then(response => response.json())
         .then(data => {
           const detailsSection = document.getElementById("listing-details");
-          if (data) {
-            detailsSection.innerHTML = `
-              <h2>${data.l_bookname}</h2>
-              <p><strong>Condition:</strong> ${data.l_condition}</p>
-              <p><strong>Price:</strong> $${data.l_price}</p>
-              <p><strong>Contact:</strong> ${data.l_email}</p>
-            `;
-          } else {
-            detailsSection.innerHTML = "<p>Listing not found.</p>";
-          }
+          detailsContainer.innerHTML = data
+            ? `<h2>${data.book_name}</h2>
+               <p>Condition: ${data.condition}</p>
+               <p>Price: $${data.price}</p>
+               <p>Seller: ${data.seller_email}</p>`
+            : "<p>Listing not found.</p>";
         })
-        .catch(err => {
-          console.error("Error:", err);
+        .catch(error => {
+          console.error("Error:", error);
           document.getElementById("listing-details").innerHTML = "<p>Error fetching listing details.</p>";
         });
     });
