@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Listings results</title>
     <link rel="stylesheet" href="report.css" />
+    <link rel="stylesheet" href="list_format.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   </head>
 <body>
@@ -19,6 +20,7 @@
   </header>
   <main>
     <section id="results-container">
+    <section id="results-container" class="grid">
       <p>Loading results...</p>
     </section>
     <a href="listings_search.html">Back to Search</a>
@@ -43,6 +45,7 @@
           if (data.length > 0) {
             resultsContainer.innerHTML = data.map(listing => `
               <div>
+                <div class="card result-card">
                 <h2><a href="listings.html?id=${listing.l_id}">${listing.l_bookname}</a></h2>
                 <p>Condition: ${listing.l_condition}</p>
                 <p>Price: $${listing.l_price}</p>
