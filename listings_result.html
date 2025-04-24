@@ -50,7 +50,7 @@
                     <p>Price: $${listing.price}</p>
                     <p><strong>Seller Email:</strong> <a href="mailto:${listing.seller_email}">${listing.seller_email}</a></p>
               </div>
-            `).join("");
+            `).join("")
             : "<p>No results found.</p>";
     })
         .catch(error => {
