@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Listing Details</title>
-    <link rel="stylesheet" href="listings.css">
-    <link rel="stylesheet" href="list_format.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Listing Details | Textbook Database</title>
+  <link rel="stylesheet" href="listings.css">
+</head>
 <body>
   <header>
     <div class="header-overlay">
-      <h1>Listing Details</h1>
+      <h1>Textbook Database</h1>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -20,37 +18,38 @@
       </nav>
     </div>
   </header>
+
   <main>
-    <section id="listing-details">
     <section id="listing-details" class="card">
       <p>Loading listing...</p>
     </section>
-    <a href="listings_result.html">Back to Results</a>
+    <a href="listings_result.html" class="back-link">Back to Results</a>
   </main>
+
   <footer class="bottom-footer">
     <div class="footer-overlay">
       <p>&copy; 2025 Textbook Database | Browse Listings</p>
     </div>
   </footer>
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const params = new URLSearchParams(window.location.search);
-      const bookName = params.get("id");
-
-      fetch(`http://127.0.0.1:5000/listings/${bookName}`)
-        .then(response => response.json())
+      const id = new URLSearchParams(location.search).get("id");
+      fetch(`http://127.0.0.1:5000/listings/${encodeURIComponent(id)}`)
+        .then(r=>r.json())
         .then(data => {
-          const detailsSection = document.getElementById("listing-details");
-          detailsContainer.innerHTML = data
-            ? `<h2>${data.book_name}</h2>
-               <p>Condition: ${data.condition}</p>
-               <p>Price: $${data.price}</p>
-               <p>Seller: ${data.seller_email}</p>`
-            : "<p>Listing not found.</p>";
+          const sec = document.getElementById("listing-details");
+          if(!data) return sec.innerHTML = "<p>Listing not found.</p>";
+          sec.innerHTML = `
+            <h2>${data.book_name}</h2>
+            <p><strong>Condition:</strong> ${data.condition}</p>
+            <p><strong>Price:</strong> $${data.price}</p>
+            <p><strong>Seller:</strong> ${data.seller_email}</p>
+          `;
         })
-        .catch(error => {
-          console.error("Error:", error);
-          document.getElementById("listing-details").innerHTML = "<p>Error fetching listing details.</p>";
+        .catch(_=>{
+          document.getElementById("listing-details")
+            .innerHTML = "<p>Error fetching listing.</p>";
         });
     });
   </script>

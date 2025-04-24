@@ -1,43 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Search Listings</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Listings | Textbook Database</title>
   <link rel="stylesheet" href="listings.css">
-  <link rel="stylesheet" href="list_format.css">
 </head>
 <body>
   <header>
-      <h1>Search Listings</h1>
+    <div class="header-overlay">
+      <h1>Textbook Database</h1>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="listings_search.html" class="active">Search Listings</a></li>
         </ul>
       </nav>
+    </div>
   </header>
+
   <main>
-    <form action="listings_result.html" method="get" id="listings-search-form">
-      <input type="text" id="search-name" name="query" placeholder="Search by book name">
-      <form id="listings-search-form" class="card" …>
-      <label for="category">Category:</label>
-      <select id="category" name="category">
-        <option value="">All Categories</option>
-        <option value="science">Science</option>
-        <option value="math">Mathematics</option>
-        <option value="engineering">Engineering</option>
-      </select>
-      <select id="condition" name="condition">
+    <form id="listings-search-form" action="listings_result.html" method="get" class="card">
+      <input type="text" name="query" placeholder="Search by book name" />
+
+      
+
+      <select name="condition">
         <option value="">Any Condition</option>
         <option value="new">New</option>
         <option value="used">Used</option>
       </select>
+
       <button type="submit">Search</button>
     </form>
   </main>
+
   <footer class="bottom-footer">
     <div class="footer-overlay">
-      <p>&copy; 2025 Textbook Database | Report Form</p>
+      <p>&copy; 2025 Textbook Database | Browse Listings</p>
     </div>
   </footer>
 </body>

@@ -155,3 +155,8 @@ main {
   margin: 40px auto;
 }
 
+
+.card {
+  align-self: flex-start;  /* don’t stretch vertically */
+  width: 280px;            
+  max-height: fit-content; }

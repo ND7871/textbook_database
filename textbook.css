@@ -16,88 +16,78 @@ html, body {
   min-height: 100vh;
 }
 
+/* Header */
 header {
   background: url('header-background.jpg') center/cover no-repeat;
   color: white;
   padding: 0;
-  text-align: center;
 }
 
 .header-overlay {
   background-color: rgba(0, 100, 13, 0.85);
   padding: 20px 10px;
+  text-align: center;
 }
 
+/* Nav: center items in a row under the header */
 nav ul {
   list-style: none;
+  display: flex;               /* 🔧 flex row */
+  justify-content: center;     /* 🔧 center horizontally */
+  gap: 20px;                   /* 🔧 spacing between links */
+  margin: 10px 0;              /* 🔧 vertical spacing */
+  padding: 0;
 }
-
 nav ul li {
-  display: inline;
-  margin: 0 12px;
+  /* nothing else needed here */
 }
-
 nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: 500;
 }
-
 nav ul li a:hover,
 nav ul li a.active {
   text-decoration: underline;
 }
 
-.textbook-container {
-  max-width: 600px;
-  margin: 60px auto;
-  background-color: white;
-  padding: 30px;
+/* Textbook details card: wider and auto-height */
+#textbook-details.card {
+  max-width: 400px;            /* 🔧 allow up to 400px */
+  width: 90%;                  /* 🔧 shrink on very small screens */
+  margin: 60px auto;           /* 🔧 top spacing + center */
+  background-color: white;     /* 🔧 white backdrop */
+  padding: 30px;               /* 🔧 inner breathing room */
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  /* removed width: 20vmin and aspect-ratio to avoid forced square */
 }
 
-.book-card {
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fdfdfd;
-}
-
-#textbook-details.card {
-  width: 20vmin;           
-  aspect-ratio: 1 / 1;     
-  margin: 3rem auto;       
-}
-
-#details-container.card {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
+/* Details container heading */
 #details-container.card h2 {
   margin-top: 0;
   color: #02640D;
 }
 
+/* “Go Back” button styling */
 .back-btn {
   display: inline-block;
   margin-top: 20px;
   text-decoration: none;
-  border: 1px solid var(--border-color);
-  border-radius: var(--input-radius);
   padding: 0.5em 1em;
-  font-size: 1rem;
-  box-sizing: border-box;
-  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+  border: 1px solid #ccc;
   background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   color: inherit;
 }
 
+/* Ensure main takes up available space */
 main {
   flex: 1;
 }
 
+/* Footer fixed to bottom */
 .bottom-footer {
   background: url('footer-background.jpg') center/cover no-repeat, #02640D;
   color: white;
@@ -115,3 +105,15 @@ main {
   background-color: rgba(0, 100, 13, 0.85);
   padding: 10px;
 }
+
+/* Increase line spacing inside the card */
+#textbook-details.card {
+  /* existing rules… */
+  line-height: 1.6;                /* 🔧 more breathing room */
+}
+
+/* Add space between each detail */
+#textbook-details.card p {
+  margin: 0.5em 0;                 /* 🔧 vertical gap between lines */
+}
+

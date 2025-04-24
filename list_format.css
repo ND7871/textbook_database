@@ -1,39 +1,154 @@
-:root {
-    --card-radius: 8px;
-    --input-radius: 8px;
-    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --border-color: #ccc;
-    --card-padding: 25px;
-    --max-content-width: 1100px;
-  }
-  
-  /* Universal card style */
-  .card {
-    background: #fff;
-    padding: var(--card-padding);
-    border: 1px solid var(--border-color);
-    border-radius: var(--card-radius);
-    box-shadow: var(--box-shadow);
-    text-align: left;
-    box-sizing: border-box;
-  }
-  
-  /* Uniform form fields & buttons */
-  input, select, button {
-    border: 1px solid var(--border-color);
-    border-radius: var(--input-radius);
-    padding: 0.5em;
-    font-size: 1rem;
-    box-sizing: border-box;
-  }
-  
-  /* Utility grid container */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    max-width: var(--max-content-width);
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background: url('images/page-backdrop.jpg') center/cover no-repeat fixed;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background: url('header-background.jpg') center/cover no-repeat;
+  color: white;
+}
+.header-overlay {
+  /* overlay container */
+  background-color: rgba(0,100,13,0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+}
+.header-overlay h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.header-overlay nav ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  margin-top: 10px;
+}
+.header-overlay nav a,
+.header-overlay nav button {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+.header-overlay nav a:hover,
+.header-overlay nav button:hover,
+.header-overlay nav a.active {
+  text-decoration: underline;
+}
+
+/* Main content */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+/* Card base */
+.card {
+  background: rgba(255,255,255,0.9);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  animation: fadeIn 0.5s ease-out;
+  text-align: left;
+}
+
+
+
+/* Search form (listings_search.html) */
+#listings-search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 280px;            /* a bit wider than before */
+}
+#listings-search-form input,
+#listings-search-form select,
+#listings-search-form button {
+  width: 100%;
+  padding: 0.75em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+#listings-search-form button {
+  background-color: #02640D;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+#listings-search-form button:hover {
+  background-color: #024f0a;
+}
+
+/* Listing details (listings.html) */
+#listing-details.card {
+  max-width: 320px;
+  width: 100%;
+}
+
+/* Results grid (listings_result.html) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1100px;
+}
+.result-card h3 {
+  margin-top: 0;
+  color: #02640D;
+}
+.result-card a {
+  text-decoration: none;
+  color: inherit;
+}
+.result-card a:hover {
+  text-decoration: underline;
+}
+
+/* “Back” links on detail/results pages */
+.back-link, a.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  background: white;
+  color: #02640D;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5em 1em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+.bottom-footer {
+  background: url('footer-background.jpg') center/cover no-repeat, #02640D;
+  color: white;
+  margin-top: auto;
+}
+.footer-overlay {
+  background-color: rgba(0,100,13,0.85);
+  text-align: center;
+  padding: 10px;
+}
