@@ -43,6 +43,8 @@
   </footer>
   <script>
     document.getElementById('login-btn').addEventListener('click', async () => {
+      event.preventDefault();
+
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value.trim();
   
@@ -63,6 +65,7 @@
           if (response.ok) {
               // Save token to localStorage
               localStorage.setItem('authToken', result.token);
+              localStorage.setItem('expires_at', result.expires_at);
   
               // Redirect to accounts page
               window.location.href = 'accounts.html'; // Change this URL to your accounts page URL
@@ -75,6 +78,7 @@
           alert('An error occurred while logging in.');
       }
   });
+  
   </script>
 </body>
 </html>

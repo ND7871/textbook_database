@@ -20,30 +20,46 @@ body {
 /* Header */
 header {
   background: url('header-background.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  position: relative;
+  padding: 0;
 }
 
 .header-overlay {
-  background-color: rgba(0, 100, 13, 0.85);
-  padding: 20px;
+  background-color: rgba(0, 100, 13, 0.85); /* Dark green semi-transparent overlay */
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
+  border-radius: 0; /* Can be changed if you want rounded top edges */
 }
 
-.header-overlay h1 {
-  color: white;
-  margin-bottom: 10px;
+header h1 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 600;
 }
-
-/* Nav – centered under the title */
-.nav-links {
+/* Nav */
+nav ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
+
+
   display: flex;
-  gap: 30px;            
+  gap: 24px; 
+  justify-content: center; 
+  align-items: center;
 }
 
-.nav-links li a,
-.nav-links li button {
+nav ul li {
+  display: flex;
+  align-items: center;
+}
+nav ul li a,
+nav ul li button {
+  font-family: 'Montserrat', sans-serif;
   color: white;
   background: none;
   border: none;
@@ -53,11 +69,10 @@ header {
   font-weight: 500;
 }
 
-.nav-links li a:hover,
-.nav-links li button:hover {
+nav ul li a:hover,
+nav ul li button:hover {
   text-decoration: underline;
 }
-
 
 main {
   flex: 1;
@@ -117,6 +132,7 @@ main {
   font-weight: 600;
   cursor: pointer;
   width: 100%;
+  margin-top: 15px;
   margin-bottom: 15px;  
 }
 

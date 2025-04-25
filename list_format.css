@@ -19,17 +19,23 @@ html, body {
 header {
   background: url('header-background.jpg') center/cover no-repeat;
   color: white;
+  text-align: center;
+  position: relative;
+  padding: 0;
 }
+
 .header-overlay {
-  /* overlay container */
-  background-color: rgba(0,100,13,0.85);
+  background-color: rgba(0, 100, 13, 0.85); /* Dark green semi-transparent overlay */
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 10px;
+  border-radius: 0; /* Can be changed if you want rounded top edges */
 }
-.header-overlay h1 {
-  font-size: 2rem;
+
+header h1 {
+  margin: 0 0 10px;
+  font-size: 24px;
   font-weight: 600;
 }
 .header-overlay nav ul {

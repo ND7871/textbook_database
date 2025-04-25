@@ -45,6 +45,65 @@ window.onload = () => {
         console.error('Error fetching user listings:', err);
         alert('An error occurred while fetching your listings.');
     });
+    function updateNavBar() {
+        const navLinks = document.getElementById("nav-links");
+        navLinks.innerHTML = ""; // Clear any existing links
+
+        const token = localStorage.getItem("authToken");
+        const expiresAt = localStorage.getItem("expires_at");
+
+        const isLoggedIn = token;
+
+        if (isLoggedIn) {
+            navLinks.innerHTML = `
+                <li><a href="index.html">Home</a></li>
+                <li><a href="listings_search.html">All Listings</a></li>
+                <li><button id="logout-btn" class="nav-button">Logout</button></li>
+                <li><a href="about.html">About us</a></li>
+            `;
+
+            setTimeout(() => {
+                const logoutBtn = document.getElementById('logout-btn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', () => {
+                        const token = localStorage.getItem('authToken');
+                        localStorage.removeItem('authToken');
+                        localStorage.removeItem('expires_at');
+
+                        fetch('http://127.0.0.1:5000/logout', {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Successfully logged out.');
+                            } else {
+                                alert('Error during logout.');
+                            }
+                            window.location.href = 'index.html';
+                        })
+                        .catch(err => {
+                            console.error('Error during logout:', err);
+                            alert('An error occurred while logging out.');
+                            window.location.href = 'index.html';
+                        });
+                    });
+                }
+            }, 0);
+        } else {
+            navLinks.innerHTML = `
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="about.html">About us</a></li>
+            `;
+        }
+    }
+
+    updateNavBar();
 
     // Show create listing form
     document.getElementById('create-listing-btn').addEventListener('click', () => {

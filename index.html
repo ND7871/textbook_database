@@ -12,12 +12,8 @@
         <div class="header-overlay">
             <h1>Textbook Database </h1>
             <nav>
-                <ul>
-                    <li><a href="listings_search.html">Listings</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="signup.html">Sign Up</a></li>
-                    <li><a href="about.html">About us</a></li>
-                    
+                <ul id="nav-links">
+                  <!-- Links will be dynamically inserted here -->
                 </ul>
             </nav>
         </div>
@@ -41,14 +37,75 @@
     </footer>
 
     <script>
-        document.getElementById("search-btn").addEventListener("click", function() {
+        function updateNavBar() {
+            const navLinks = document.getElementById("nav-links");
+            navLinks.innerHTML = ""; // Clear any existing links
+    
+            const token = localStorage.getItem("authToken");
+            const expiresAt = localStorage.getItem("expires_at");
+    
+            const isLoggedIn = token;
+    
+            if (isLoggedIn) {
+                navLinks.innerHTML = `
+                    <li><a href="listings_search.html">Listings</a></li>
+                    <li><a href="accounts.html">My Profile</a></li>
+                    <li><button id="logout-btn" class="nav-button">Logout</button></li>
+                    <li><a href="about.html">About us</a></li>
+                `;
+    
+                setTimeout(() => {
+                    const logoutBtn = document.getElementById('logout-btn');
+                    if (logoutBtn) {
+                        logoutBtn.addEventListener('click', () => {
+                            const token = localStorage.getItem('authToken');
+                            localStorage.removeItem('authToken');
+                            localStorage.removeItem('expires_at');
+    
+                            fetch('http://127.0.0.1:5000/logout', {
+                                method: 'POST',
+                                headers: {
+                                    'Authorization': `Bearer ${token}`
+                                }
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    alert('Successfully logged out.');
+                                } else {
+                                    alert('Error during logout.');
+                                }
+                                window.location.href = 'index.html';
+                            })
+                            .catch(err => {
+                                console.error('Error during logout:', err);
+                                alert('An error occurred while logging out.');
+                                window.location.href = 'index.html';
+                            });
+                        });
+                    }
+                }, 0);
+            } else {
+                navLinks.innerHTML = `
+                    <li><a href="listings_search.html">Listings</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                    <li><a href="about.html">About us</a></li>
+                `;
+            }
+        }
+    
+        updateNavBar();
+    
+        // Handle textbook search
+        document.getElementById("search-btn").addEventListener("click", function () {
             let textbookName = document.getElementById("textbook-name-input").value;
-
+    
             if (!textbookName) {
                 alert("Please enter the name of the textbook!");
                 return;
             }
-
+    
             window.location.href = `results.html?query=${encodeURIComponent(textbookName)}`;
         });
     </script>

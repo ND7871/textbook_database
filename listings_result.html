@@ -25,7 +25,7 @@
     <section id="results-container" class="grid">
       <p>Loading results…</p>
     </section>
-    <a href="listings_search.html" class="back-link">Back to Search</a>
+    <button class="back-link" onclick="window.location.href='listings_search.html'">Back to Search</button>
   </main>
 
   <footer class="bottom-footer">
@@ -48,7 +48,7 @@
           const container = document.getElementById("results-container");
           if(!data.length) return container.innerHTML = "<p>No results found.</p>";
           container.innerHTML = data.map(l => `
-            <div class="card result-card">
+            <div class="card listing-card">
               <h3><a href="listings.html?id=${encodeURIComponent(l.book_name)}">${l.book_name}</a></h3>
               <p>Condition: ${l.condition}</p>
               <p>Price: $${l.price}</p>

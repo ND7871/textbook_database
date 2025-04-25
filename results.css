@@ -1,48 +1,61 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
-
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 html, body {
   height: 100%;
   font-family: 'Montserrat', sans-serif;
   background: url('images/page-backdrop.jpg') center/cover no-repeat fixed;
   background-color: #f9f9f9;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
-/* HEADER */
 header {
   background: url('header-background.jpg') center/cover no-repeat;
   color: white;
   padding: 0;
   text-align: center;
 }
+
 .header-overlay {
   background-color: rgba(0, 100, 13, 0.85);
   padding: 20px 10px;
 }
+
+/* Nav */
 nav ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
+
+
+  display: flex;
+  gap: 24px; 
+  justify-content: center; 
+  align-items: center;
 }
+
 nav ul li {
-  display: inline;
-  margin: 0 12px;
+  display: flex;
+  align-items: center;
 }
-nav ul li a {
+nav ul li a,
+nav ul li button {
+  font-family: 'Montserrat', sans-serif;
   color: white;
+  background: none;
+  border: none;
+  font-size: 16px;
   text-decoration: none;
+  cursor: pointer;
   font-weight: 500;
 }
+
 nav ul li a:hover,
-nav ul li a.active {
+nav ul li button:hover {
   text-decoration: underline;
 }
 

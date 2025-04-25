@@ -1,48 +1,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html, body {
-  height: 100%;
-  font-family: 'Montserrat', sans-serif;
-  background: url('images/page-backdrop.jpg') center/cover no-repeat fixed;
-  background-color: #f9f9f9;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background: url('images/page-backdrop.jpg') center/cover no-repeat fixed;
+    background-color: #f9f9f9;
 }
 
-/* Header */
+/* Header with background */
 header {
-  background: url('header-background.jpg') center/cover no-repeat;
-  color: white;
-  text-align: center;
-  padding: 0;
-}
-
-.header-overlay {
-  background-color: rgba(0, 100, 13, 0.85);
-  padding: 20px 10px;
-}
-
+    background: url('header-background.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    position: relative;
+    padding: 0;
+  }
+  
+  .header-overlay {
+    background-color: rgba(0, 100, 13, 0.85); /* Dark green semi-transparent overlay */
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0; /* Can be changed if you want rounded top edges */
+  }
+  
+  header h1 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+/* Nav */
 nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
+
+
   display: flex;
-  justify-content: center;
-  gap: 30px;
+  gap: 24px; 
+  justify-content: center; 
+  align-items: center;
 }
 
-nav ul li a {
+nav ul li {
+  display: flex;
+  align-items: center;
+}
+nav ul li a,
+nav ul li button {
+  font-family: 'Montserrat', sans-serif;
   color: white;
-  text-decoration: none;    
+  background: none;
+  border: none;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
   font-weight: 500;
 }
 
-nav ul li a:hover {
-  text-decoration: underline;  
+nav ul li a:hover,
+nav ul li button:hover {
+  text-decoration: underline;
 }
 
 /* Main Containers */
@@ -87,7 +112,26 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
+.back-link {
+  display: inline-block;
+  padding: 10px;
+  font-size: 15px; 
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 0;  
+  text-align: center;
+  color: white;
+  background-color: #02640D; 
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
 
+.back-link:hover {
+  background-color: #024f0a; 
+}
 button:hover {
   background-color: #024f0a;
 }
@@ -136,6 +180,11 @@ main {
 
 /* Search results grid (if you choose to keep it here) */
 
+#results-container.grid {
+}
+
+.result-card {
+}
 
 #listings-search-form.card {
   max-width: 600px;

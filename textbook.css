@@ -20,27 +20,36 @@ html, body {
 header {
   background: url('header-background.jpg') center/cover no-repeat;
   color: white;
+  text-align: center;
+  position: relative;
   padding: 0;
 }
 
 .header-overlay {
-  background-color: rgba(0, 100, 13, 0.85);
+  background-color: rgba(0, 100, 13, 0.85); 
   padding: 20px 10px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0; 
+}
+
+header h1 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 /* Nav: center items in a row under the header */
 nav ul {
   list-style: none;
-  display: flex;               /* 🔧 flex row */
-  justify-content: center;     /* 🔧 center horizontally */
-  gap: 20px;                   /* 🔧 spacing between links */
-  margin: 10px 0;              /* 🔧 vertical spacing */
+  display: flex;             
+  justify-content: center;    
+  gap: 20px;                  
+  margin: 10px 0;              
   padding: 0;
 }
-nav ul li {
-  /* nothing else needed here */
-}
+
 nav ul li a {
   color: white;
   text-decoration: none;
