@@ -13,7 +13,9 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="listings_search.html">Search Listings</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="accounts.html">Account</a></li>
+          <li><a href="about.html">About us</a></li>
         </ul>
       </nav>
     </div>
@@ -35,38 +37,30 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const p = new URLSearchParams(location.search);
-      const qs   = p.get("query")     || "";
-      const cond = p.get("condition") || "";
-  
-      fetch(
-        `http://127.0.0.1:5000/listings?query=${encodeURIComponent(qs)}&condition=${encodeURIComponent(cond)}`
-      )
-        .then(r => r.json())
+      const qs = p.get("query")||"";
+      const cond = p.get("condition")||"";
+      const minPrice = p.get("min_price");
+      const maxPrice = p.get("max_price");
+
+      fetch(`http://127.0.0.1:5000/listings?query=${encodeURIComponent(qs)}&condition=${encodeURIComponent(cond)}&minPrice=${encodeURIComponent(minPrice)}&maxPrice=${encodeURIComponent(maxPrice)}`)
+        .then(r=>r.json())
         .then(data => {
           const container = document.getElementById("results-container");
-          if (!data.length) {
-            container.innerHTML = "<p>No results found.</p>";
-            return;
-          }
+          if(!data.length) return container.innerHTML = "<p>No results found.</p>";
           container.innerHTML = data.map(l => `
             <div class="card result-card">
-              <h3>
-                <a href="listings.html?id=${encodeURIComponent(l.book_name)}">
-                  ${l.book_name}
-                </a>
-              </h3>
+              <h3><a href="listings.html?id=${encodeURIComponent(l.book_name)}">${l.book_name}</a></h3>
               <p>Condition: ${l.condition}</p>
               <p>Price: $${l.price}</p>
               <p>Seller: <a href="mailto:${l.seller_email}">${l.seller_email}</a></p>
             </div>
           `).join("");
         })
-        .catch(_ => {
+        .catch(_=>{
           document.getElementById("results-container")
             .innerHTML = "<p>Error fetching results.</p>";
         });
     });
   </script>
-  
 </body>
 </html>
