@@ -1,66 +1,97 @@
+
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 html, body {
   height: 100%;
   font-family: 'Montserrat', sans-serif;
   background: url('images/page-backdrop.jpg') center/cover no-repeat fixed;
   background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+/* HEADER */
 header {
   background: url('header-background.jpg') center/cover no-repeat;
   color: white;
   padding: 0;
   text-align: center;
 }
-
 .header-overlay {
   background-color: rgba(0, 100, 13, 0.85);
   padding: 20px 10px;
 }
-
 nav ul {
   list-style: none;
 }
-
 nav ul li {
   display: inline;
   margin: 0 12px;
 }
-
 nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: 500;
 }
-
 nav ul li a:hover,
 nav ul li a.active {
   text-decoration: underline;
 }
 
+
 .results-container {
-  max-width: 800px;
-  margin: 60px auto;
-  padding: 30px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  text-align: center;
+  background: transparent;  /* remove white fill */
+  box-shadow: none;         
+  padding: 0;               /* remove wrapper padding */
+  margin: 60px auto;        /* keep centering and vertical gap */
+  max-width: 800px;        
+  text-align: center;       
 }
 
+/* Search-result items container */
 #offer-container p {
   padding: 10px;
   margin: 10px 0;
   border-bottom: 1px solid #ccc;
 }
 
+/* Individual result cards */
+.result-card {
+  padding: 20px;
+}
+.result-card h3 {
+  margin-top: 0;
+  color: #02640D;
+}
+
+/* BACK button styling */
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  border: 1px solid #ccc;                      
+  border-radius: 8px;                           
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);       
+  background: white;
+  color: inherit;
+}
+
+/* FLEX for main area */
+main {
+  flex: 1;
+}
+
+/* FOOTER */
 .bottom-footer {
   background: url('footer-background.jpg') center/cover no-repeat, #02640D;
   color: white;
@@ -68,49 +99,7 @@ nav ul li a.active {
   padding: 25px 10px;
   margin-top: auto;
 }
-
 .footer-overlay {
   background-color: rgba(0, 100, 13, 0.85);
   padding: 10px;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1;
-}
-
-/* Panel wrapper styling */
-#search-results.card {
-    max-width: var(--max-content-width);
-    margin: 40px auto;
-}
-
-/* Back button styling */
-.back-btn {
-    display: inline-block;
-    margin-top: 20px;
-    text-decoration: none;
-    border: 1px solid var(--border-color);
-    border-radius: var(--input-radius);
-    padding: 0.5em 1em;
-    font-size: 1rem;
-    box-sizing: border-box;
-    box-shadow: var(--box-shadow);
-    background: white;
-    color: inherit;
-}
-
-/* Individual result cards */
-.result-card {
-    padding: 20px;
-}
-
-.result-card h3 {
-    margin-top: 0;
-    color: #02640D;
 }
