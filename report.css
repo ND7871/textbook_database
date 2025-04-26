@@ -120,3 +120,18 @@ body {
 main {
   flex: 1;
 }
+
+
+.mini-card {
+  background-color: white;
+  padding: 30px 20px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.mini-card form {
+  display: flex;
+  flex-direction: column;
+}

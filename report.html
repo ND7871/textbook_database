@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Report an Issue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report an Issue | Textbook Database</title>
   <link rel="stylesheet" href="report.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -24,30 +24,56 @@
   </header>
 
   <main class="report-container">
-    <form action="https://formspree.io/f/xrbpvpaw" method="POST">
-      <label for="category">Issue Type:</label>
-      <select id="category" name="category" required>
-        <option value="">Select a category</option>
-        <option value="book">Book Listing Issue</option>
-        <option value="user">Report a User</option>
-        <option value="technical">Technical Mistake</option>
-        <option value="Password">Passoword Reset</option>
-        <option value="other">Other</option>
-      </select>
 
-      <label for="message">Describe the issue:</label>
-      <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+    <!-- Report an Issue -->
+    <section class="mini-card">
+      <h2>Report an Issue</h2>
+      <form action="https://formspree.io/f/xrbpvpaw" method="POST">
+        <label for="category">Issue Type:</label>
+        <select id="category" name="category" required>
+          <option value="">Select a category</option>
+          <option value="book">Book Listing Issue</option>
+          <option value="user">Report a User</option>
+          <option value="technical">Technical Mistake</option>
+          <option value="password">Password Reset</option>
+          <option value="other">Other</option>
+        </select>
 
-      <label for="email">Your Email :</label>
-      <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        <label for="message">Describe the Issue:</label>
+        <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
 
-      <button type="submit">Submit Report</button>
-    </form>
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+
+        <button type="submit">Submit Report</button>
+      </form>
+    </section>
+
+    <!--  Suggest a Book -->
+    <section class="mini-card">
+      <h2>Suggest a Book for the Database</h2>
+      <form action="https://formspree.io/f/xrbpvpaw" method="POST">
+        <label for="class">Class Code:</label>
+        <input type="text" id="class" name="Class"  required>
+
+        <label for="professor">Professor Name:</label>
+        <input type="text" id="professor" name="Professor"  required>
+
+        <label for="book">Book Title:</label>
+        <input type="text" id="book" name="Book"  required>
+
+        <label for="submitter-email">Your Email:</label>
+        <input type="email" id="submitter-email" name="email"  required>
+
+        <button type="submit">Submit Book Suggestion</button>
+      </form>
+    </section>
+
   </main>
 
   <footer class="bottom-footer">
     <div class="footer-overlay">
-      <p>&copy; 2025 Textbook Database | Report Form</p>
+      <p>&copy; 2025 Textbook Database | Report Page</p>
     </div>
   </footer>
 </body>
